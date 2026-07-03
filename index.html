@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sid Perfume — Scents That Define Your Legacy</title>
+  <meta name="description" content="Premium luxury perfumes by Sid Perfume. World Cup limited edition fragrances, celebrity endorsements, and ultra-exclusive FIFA Signature Perfumes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ════════════════════════════════════════════════════════
+       PRE-LOADER SCREEN
+       ════════════════════════════════════════════════════════ -->
+  <div id="loader" class="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <span class="loader-logo-text">SID</span>
+        <span class="loader-logo-sub">PERFUME</span>
+      </div>
+      <div class="loader-bar-wrapper">
+        <div class="loader-bar" id="loaderBar"></div>
+      </div>
+      <p class="loader-tagline">Crafting Your Signature...</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       CUSTOM CURSOR
+       ════════════════════════════════════════════════════════ -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       SITE WRAPPER
+       ════════════════════════════════════════════════════════ -->
+  <div id="siteWrapper" class="site-wrapper">
+
+    <!-- ══════════════════════════════════════════════════════
+         NAVBAR
+         ══════════════════════════════════════════════════════ -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-text">SID</span>
+          <span class="nav-logo-sub">PERFUME</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="#hero" class="nav-link active">Home</a>
+          <a href="#worldcup" class="nav-link">World Cup Deals</a>
+          <a href="#fifa" class="nav-link">FIFA Special</a>
+          <a href="#celebrities" class="nav-link">Celebrities</a>
+          <a href="#about" class="nav-link">About</a>
+        </div>
+        <button class="nav-cta" id="navCta">Secure Yours</button>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════════════
+         HERO SECTION
+         ══════════════════════════════════════════════════════ -->
+    <section id="hero" class="hero-section">
+      <canvas id="particleCanvas" class="particle-canvas"></canvas>
+      <div class="hero-overlay"></div>
+      <div class="hero-content" id="heroContent">
+        <div class="hero-badge">2026 Limited Collection</div>
+        <h1 class="hero-title">
+          <span id="typingText"></span><span class="typing-cursor">|</span>
+        </h1>
+        <p class="hero-subtitle">Where timeless craftsmanship meets digital artistry — each bottle tells a story of power, passion, and prestige.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary hero-cta" data-cursor-hover>Explore Collection</button>
+          <button class="btn btn-outline hero-cta-alt" data-cursor-hover>Watch Film</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="50000">0</span>
+            <span class="hero-stat-label">Bottles Sold</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="15000">0</span>
+            <span class="hero-stat-label">VIP Members</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-num" data-count="4.9">0.0</span>
+            <span class="hero-stat-label">Rating</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         WORLD CUP EXCLUSIVE DEALS SECTION
+         ══════════════════════════════════════════════════════ -->
+    <section id="worldcup" class="section worldcup-section">
+      <div class="section-bg-shapes"></div>
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">World Cup 2026</span>
+          <h2 class="section-title">Limited Edition <span class="gold-text">Deals</span></h2>
+          <p class="section-desc">Exclusive fragrance bundles inspired by the beautiful game — crafted for champions who command the pitch.</p>
+        </div>
+
+        <div class="worldcup-counter reveal">
+          <div class="counter-glass">
+            <div class="counter-icon">🏆</div>
+            <div class="counter-info">
+              <span class="counter-label">World Cup Bundles Claimed</span>
+              <div class="counter-bar-track">
+                <div class="counter-bar-fill" id="bundleCounterFill" style="width:0%"></div>
+              </div>
+              <span class="counter-percent" id="bundleCounterPercent">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="deals-grid">
+          <!-- Deal Card 1 -->
+          <div class="deal-card glass-card reveal" data-delay="0">
+            <div class="deal-badge">Best Seller</div>
+            <div class="deal-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&q=80" alt="Golden Boot Intense" class="deal-image" loading="lazy" />
+            </div>
+            <div class="deal-info">
+              <h3 class="deal-name">Golden Boot Intense</h3>
+              <p class="deal-desc">A bold, leathery oriental with saffron & oud — for the striker who defines the game.</p>
+              <div class="deal-meta">
+                <span class="deal-price">$189 <small>$249</small></span>
+                <span class="deal-stock" data-target="82">82% Claimed</span>
+              </div>
+              <div class="deal-stock-bar">
+                <div class="deal-stock-fill" style="width:82%"></div>
+              </div>
+              <button class="btn btn-primary deal-cta" data-cursor-hover>Claim Bundle</button>
+            </div>
+          </div>
+
+          <!-- Deal Card 2 -->
+          <div class="deal-card glass-card reveal" data-delay="100">
+            <div class="deal-badge">Hot Deal</div>
+            <div class="deal-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=80" alt="Hat-Trick Fresh" class="deal-image" loading="lazy" />
+            </div>
+            <div class="deal-info">
+              <h3 class="deal-name">Hat-Trick Fresh</h3>
+              <p class="deal-desc">Crisp aqua notes with white musk & grapefruit — pure energy, three times the impact.</p>
+              <div class="deal-meta">
+                <span class="deal-price">$159 <small>$219</small></span>
+                <span class="deal-stock" data-target="91">91% Claimed</span>
+              </div>
+              <div class="deal-stock-bar">
+                <div class="deal-stock-fill" style="width:91%"></div>
+              </div>
+              <button class="btn btn-primary deal-cta" data-cursor-hover>Claim Bundle</button>
+            </div>
+          </div>
+
+          <!-- Deal Card 3 -->
+          <div class="deal-card glass-card reveal" data-delay="200">
+            <div class="deal-badge">Premium</div>
+            <div class="deal-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&q=80" alt="Matchday Oud" class="deal-image" loading="lazy" />
+            </div>
+            <div class="deal-info">
+              <h3 class="deal-name">Matchday Oud</h3>
+              <p class="deal-desc">Deep, smoky agarwood blended with dark leather & spices — the scent of victory.</p>
+              <div class="deal-meta">
+                <span class="deal-price">$229 <small>$299</small></span>
+                <span class="deal-stock" data-target="67">67% Claimed</span>
+              </div>
+              <div class="deal-stock-bar">
+                <div class="deal-stock-fill" style="width:67%"></div>
+              </div>
+              <button class="btn btn-primary deal-cta" data-cursor-hover>Claim Bundle</button>
+            </div>
+          </div>
+
+          <!-- Deal Card 4 -->
+          <div class="deal-card glass-card reveal" data-delay="300">
+            <div class="deal-badge">Limited</div>
+            <div class="deal-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&q=80" alt="Captain's Reserve" class="deal-image" loading="lazy" />
+            </div>
+            <div class="deal-info">
+              <h3 class="deal-name">Captain's Reserve</h3>
+              <p class="deal-desc">A refined woody-spice blend with amber, vetiver & a whisper of cognac — leadership in a bottle.</p>
+              <div class="deal-meta">
+                <span class="deal-price">$199 <small>$269</small></span>
+                <span class="deal-stock" data-target="78">78% Claimed</span>
+              </div>
+              <div class="deal-stock-bar">
+                <div class="deal-stock-fill" style="width:78%"></div>
+              </div>
+              <button class="btn btn-primary deal-cta" data-cursor-hover>Claim Bundle</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         FIFA SPECIAL PERFUME — Premium Product Showcase
+         ══════════════════════════════════════════════════════ -->
+    <section id="fifa" class="section fifa-section">
+      <div class="fifa-bg-ornament"></div>
+      <div class="container">
+        <div class="fifa-special-badge reveal">
+          <div class="fifa-holographic-badge">
+            <span class="holographic-text">⚽ FIFA SPECIAL EDITION</span>
+          </div>
+        </div>
+
+        <div class="fifa-split-layout">
+          <!-- Left: Visual Gallery -->
+          <div class="fifa-visual-col reveal">
+            <div class="fifa-gallery">
+              <div class="fifa-gallery-main">
+                <div class="fifa-img-placeholder">
+                  <div class="placeholder-skeleton">
+                    <div class="skeleton-icon">🍾</div>
+                    <p class="skeleton-text">fifa-green-bottle.jpg</p>
+                    <p class="skeleton-hint">Drop your image here</p>
+                  </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=600&q=85" alt="FIFA Special Edition Emerald Green Perfume Bottle" class="fifa-bottle-img" id="fifaBottleImg" loading="lazy" />
+                <div class="fifa-gallery-glow"></div>
+                <div class="fifa-bottle-size-badge">10 ml · Collector</div>
+              </div>
+              <div class="fifa-gallery-thumb">
+                <div class="fifa-img-placeholder thumb-placeholder">
+                  <div class="placeholder-skeleton">
+                    <p class="skeleton-text">wooden-case.jpg</p>
+                  </div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1602075432748-82d264e2b7d5?w=300&q=85" alt="Premium wooden display case with gold hinges" class="fifa-case-img" loading="lazy" />
+              </div>
+            </div>
+            <div class="fifa-case-label">Premium Dark-Wooden Display Case with Gold Accents</div>
+          </div>
+
+          <!-- Right: Product Copy -->
+          <div class="fifa-copy-col reveal" data-delay="150">
+            <div class="fifa-copy-badge">Ultra-Limited · 500 Pieces Worldwide</div>
+            <h2 class="fifa-copy-title">FIFA Special <span class="gold-text">Edition</span></h2>
+            <div class="fifa-copy-subtitle">by Sid Perfumes</div>
+
+            <div class="fifa-copy-desc">
+              <p>A masterpiece of olfactory craftsmanship, encased in a deep emerald green glass bottle. Each 10ml collector's flacon is hand-filled and sealed, presented in a dark-grained wooden case with polished gold hinges — a true collector's artifact for the world's biggest stage.</p>
+            </div>
+
+            <div class="fifa-copy-details">
+              <div class="fifa-detail-row">
+                <span class="fifa-detail-label">Volume</span>
+                <span class="fifa-detail-value">10 ml / 0.34 fl oz</span>
+              </div>
+              <div class="fifa-detail-row">
+                <span class="fifa-detail-label">Bottle</span>
+                <span class="fifa-detail-value">Emerald Green Glass</span>
+              </div>
+              <div class="fifa-detail-row">
+                <span class="fifa-detail-label">Packaging</span>
+                <span class="fifa-detail-value">Wooden Case · Gold Hinges</span>
+              </div>
+              <div class="fifa-detail-row">
+                <span class="fifa-detail-label">Edition</span>
+                <span class="fifa-detail-value">#<span id="fifaEditionNum">001</span> / 500</span>
+              </div>
+            </div>
+
+            <div class="fifa-copy-pricing">
+              <div class="fifa-copy-price">
+                <span class="fifa-price-current">$349</span>
+                <span class="fifa-price-original">$599</span>
+              </div>
+              <button class="btn btn-primary fifa-cta pulse-cta" data-cursor-hover>
+                Secure Your Bottle
+              </button>
+            </div>
+
+            <div class="fifa-copy-timer">
+              <span class="fifa-timer-label">Offer ends in</span>
+              <div class="fifa-timer-digits">
+                <span class="timer-unit"><span id="timerDays">05</span> Days</span>
+                <span class="timer-unit"><span id="timerHours">12</span> Hrs</span>
+                <span class="timer-unit"><span id="timerMins">30</span> Min</span>
+                <span class="timer-unit"><span id="timerSecs">45</span> Sec</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Notes Scent Profile -->
+      <div class="fifa-notes-section">
+        <div class="container">
+          <div class="fifa-notes-header reveal">
+            <h3 class="fifa-notes-title">Scent <span class="gold-text">Profile</span></h3>
+            <p class="fifa-notes-subtitle">A meticulously layered fragrance built for champions</p>
+          </div>
+          <div class="fifa-notes-grid">
+            <div class="fifa-note-card glass-card reveal" data-delay="0">
+              <div class="note-icon-wrapper">
+                <svg class="note-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <h4 class="note-name">Top Notes</h4>
+              <p class="note-desc">Bergamot · Pink Pepper · Green Mandarin</p>
+              <p class="note-feel">Bright, citrusy burst with a spicy edge</p>
+            </div>
+            <div class="fifa-note-card glass-card reveal" data-delay="100">
+              <div class="note-icon-wrapper heart-note">
+                <svg class="note-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+              <h4 class="note-name">Heart Notes</h4>
+              <p class="note-desc">Jasmine Sambac · Iris · Clove</p>
+              <p class="note-feel">Elegant floral warmth with subtle spice</p>
+            </div>
+            <div class="fifa-note-card glass-card reveal" data-delay="200">
+              <div class="note-icon-wrapper base-note">
+                <svg class="note-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+              <h4 class="note-name">Base Notes</h4>
+              <p class="note-desc">Vetiver · Cedarwood · Amber · Musk</p>
+              <p class="note-feel">Deep, woody richness that lingers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         CELEBRITY ENDORSEMENT SECTION
+         ══════════════════════════════════════════════════════ -->
+    <section id="celebrities" class="section celebrity-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Celebrity Endorsement</span>
+          <h2 class="section-title">The Signature Choice of <span class="gold-text">Icons</span></h2>
+          <p class="section-desc">Endorsed by Pakistan's finest — legends who embody the essence of timeless luxury and refined elegance.</p>
+        </div>
+
+        <div class="celebrity-grid">
+          <!-- Fawad Khan -->
+          <div class="celebrity-card glass-card reveal" data-delay="0">
+            <div class="celebrity-image-wrapper">
+              <div class="celebrity-img-placeholder">
+                <div class="placeholder-skeleton">
+                  <div class="skeleton-icon">📸</div>
+                  <p class="skeleton-text">fawad-signature.jpg</p>
+                  <p class="skeleton-hint">Drop your image here</p>
+                </div>
+              </div>
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85" alt="Fawad Khan endorsing Limited Signature Perfume" class="celebrity-img" loading="lazy" />
+              <div class="celebrity-overlay">
+                <div class="celebrity-quote">"Timeless. Elegant. Unforgettable."</div>
+              </div>
+              <div class="celebrity-badge">Limited Signature</div>
+            </div>
+            <div class="celebrity-info">
+              <h3 class="celebrity-name">Fawad Khan</h3>
+              <p class="celebrity-title">Brand Ambassador</p>
+              <p class="celebrity-quote-text">"Timeless. Elegant. Unforgettable."</p>
+              <div class="celebrity-notes">
+                <span>Oud</span><span>Amber</span><span>Leather</span><span>Musk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mahira Khan -->
+          <div class="celebrity-card glass-card reveal" data-delay="150">
+            <div class="celebrity-image-wrapper">
+              <div class="celebrity-img-placeholder">
+                <div class="placeholder-skeleton">
+                  <div class="skeleton-icon">📸</div>
+                  <p class="skeleton-text">mahira-signature.jpg</p>
+                  <p class="skeleton-hint">Drop your image here</p>
+                </div>
+              </div>
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=85" alt="Mahira Khan with Limited Signature Perfume campaign" class="celebrity-img" loading="lazy" />
+              <div class="celebrity-overlay">
+                <div class="celebrity-quote">"A scent that speaks luxury."</div>
+              </div>
+              <div class="celebrity-badge">Limited Signature</div>
+            </div>
+            <div class="celebrity-info">
+              <h3 class="celebrity-name">Mahira Khan</h3>
+              <p class="celebrity-title">Brand Ambassador</p>
+              <p class="celebrity-quote-text">"A scent that speaks luxury."</p>
+              <div class="celebrity-notes">
+                <span>Rose</span><span>Saffron</span><span>Vanilla</span><span>Patchouli</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="celebrity-cta-wrapper reveal">
+          <button class="btn btn-primary celebrity-cta pulse-cta" data-cursor-hover>
+            Shop the Limited Edition
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ABOUT / TEAM SECTION
+         ══════════════════════════════════════════════════════ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Meet the Team</span>
+          <h2 class="section-title">The Vision Behind <span class="gold-text">Sid Perfume</span></h2>
+          <p class="section-desc">Passionate creators, curators, and connoisseurs — the people who bring each fragrance to life.</p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Wasi Khero -->
+          <div class="team-card glass-card reveal" data-delay="0">
+            <div class="team-image-wrapper">
+              <div class="team-img-placeholder">
+                <div class="placeholder-skeleton">
+                  <div class="skeleton-icon">👤</div>
+                  <p class="skeleton-text">wasi-khero.jpg</p>
+                  <p class="skeleton-hint">Drop your image here</p>
+                </div>
+              </div>
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=85" alt="Wasi Khero — Team Member" class="team-img" loading="lazy" />
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Wasi Khero</h3>
+              <p class="team-role">Brand Ambassador & Creative Curator</p>
+              <p class="team-bio">A visionary with an innate sense of luxury and style. Wasi brings a modern edge to Sid Perfume, bridging the gap between timeless fragrance traditions and contemporary digital culture.</p>
+              <a href="https://instagram.com/wasikherro" target="_blank" rel="noopener noreferrer" class="team-social">
+                <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>@wasikherro</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         FOOTER
+         ══════════════════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <span class="footer-logo">SID PERFUME</span>
+            <p class="footer-tagline">Defining legacies, one scent at a time.</p>
+            <div class="footer-social">
+              <a href="https://instagram.com/wasikherro" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram @wasikherro">
+                <svg class="social-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>@wasikherro</span>
+              </a>
+              <a href="https://instagram.com/btw._saad._" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram @btw._saad._">
+                <svg class="social-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>@btw._saad._</span>
+              </a>
+            </div>
+          </div>
+          <div class="footer-links-col">
+            <h4>Quick Links</h4>
+            <a href="#hero">Home</a>
+            <a href="#worldcup">World Cup Deals</a>
+            <a href="#fifa">FIFA Special</a>
+            <a href="#celebrities">Celebrities</a>
+            <a href="#about">About</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Support</h4>
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns</a>
+            <a href="#">Contact Us</a>
+            <a href="#">FAQ</a>
+          </div>
+          <div class="footer-newsletter">
+            <h4>Join the Legacy</h4>
+            <p>Subscribe for exclusive drops & VIP access.</p>
+            <form class="footer-form" id="footerForm">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit" class="btn btn-primary">→</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Sid Perfume. All rights reserved. Crafted with obsession.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- / site-wrapper -->
+
+  <!-- ════════════════════════════════════════════════════════
+       SCRIPTS
+       ════════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
