@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SID PERFUME — Scents That Define Your Legacy</title>
+<meta name="description" content="Premium luxury perfumes by Sid Perfume. Welcome to a world of timeless craftsmanship and elite fragrances.">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   WELCOME PAGE — Sid Perfume
+   Zero external deps · CSS-only animations · Instant loading
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
+  background:#0A1128;
+  color:#F8F6F0;
+  overflow:hidden;
+  width:100vw;
+  height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ── Animated Background ── */
+.bg-wrap{
+  position:fixed;inset:0;
+  z-index:0;
+  overflow:hidden;
+}
+.bg-gradient{
+  position:absolute;inset:-40%;
+  background:radial-gradient(ellipse at 30% 20%,#1D4ED8 0%,transparent 50%),
+              radial-gradient(ellipse at 70% 80%,#C9A84C 0%,transparent 40%),
+              radial-gradient(ellipse at 50% 50%,#0A1128 0%,#0A1128 100%);
+  animation:bgRotate 20s ease-in-out infinite;
+  will-change:transform;
+}
+.bg-gradient::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(201,168,76,0.08) 0%,transparent 60%);
+  animation:bgPulse 8s ease-in-out infinite;
+}
+@keyframes bgRotate{
+  0%,100%{transform:rotate(0deg) scale(1)}
+  33%{transform:rotate(120deg) scale(1.1)}
+  66%{transform:rotate(240deg) scale(0.95)}
+}
+@keyframes bgPulse{
+  0%,100%{opacity:0.4}
+  50%{opacity:1}
+}
+
+/* ── Morphing Clip-Path Ornament ── */
+.clip-ornament{
+  position:absolute;
+  top:50%;left:50%;
+  width:120vmax;height:120vmax;
+  transform:translate(-50%,-50%);
+  background:rgba(201,168,76,0.03);
+  clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);
+  animation:morphShape 12s ease-in-out infinite;
+  will-change:clip-path;
+}
+@keyframes morphShape{
+  0%,100%{clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)}
+  25%{clip-path:polygon(20% 10%,80% 5%,95% 45%,75% 90%,30% 95%,5% 55%)}
+  50%{clip-path:polygon(30% 5%,70% 15%,90% 55%,65% 85%,20% 90%,10% 45%)}
+  75%{clip-path:polygon(15% 8%,85% 8%,98% 48%,70% 88%,25% 98%,2% 52%)}
+}
+
+/* ── Gold dot grid overlay ── */
+.dot-grid{
+  position:fixed;inset:0;z-index:1;
+  pointer-events:none;
+  background-image:radial-gradient(circle,rgba(201,168,76,0.08) 1px,transparent 1px);
+  background-size:40px 40px;
+  animation:dotFade 6s ease-in-out infinite;
+}
+@keyframes dotFade{
+  0%,100%{opacity:0.3}
+  50%{opacity:0.6}
+}
+
+/* ── Center Content ── */
+.center-wrap{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  width:100%;height:100%;
+  padding:24px;
+  text-align:center;
+}
+
+/* ── Logo ── */
+.logo{
+  opacity:0;
+  transform:translateY(-20px) scale(0.9);
+  animation:logoReveal 1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+  will-change:transform,opacity;
+}
+.logo-primary{
+  display:block;
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:800;
+  letter-spacing:clamp(6px,2vw,16px);
+  color:#C9A84C;
+  line-height:1;
+  text-shadow:0 0 80px rgba(201,168,76,0.3);
+}
+.logo-sub{
+  display:block;
+  font-size:clamp(0.65rem,1.2vw,1rem);
+  font-weight:300;
+  letter-spacing:clamp(8px,2.5vw,18px);
+  color:rgba(248,246,240,0.5);
+  text-transform:uppercase;
+  margin-top:8px;
+}
+@keyframes logoReveal{
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* ── Divider Line ── */
+.divider{
+  width:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#C9A84C,transparent);
+  margin:clamp(20px,4vh,40px) auto;
+  animation:dividerGrow 0.8s cubic-bezier(0.16,1,0.3,1) 0.9s forwards;
+  will-change:width;
+}
+@keyframes dividerGrow{
+  to{width:clamp(60px,15vw,120px)}
+}
+
+/* ── Headline ── */
+.headline{
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.2s forwards;
+  will-change:transform,opacity;
+  max-width:720px;
+}
+.headline h1{
+  font-size:clamp(1.8rem,4.5vw,3.2rem);
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:-0.02em;
+  color:#F8F6F0;
+}
+.headline .accent{
+  display:inline-block;
+  background:linear-gradient(135deg,#C9A84C,#DBC47A,#C9A84C);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmerText 3s ease-in-out infinite;
+}
+@keyframes shimmerText{
+  0%,100%{background-position:0% center}
+  50%{background-position:100% center}
+}
+@keyframes fadeSlideUp{
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── Subheader ── */
+.subheader{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.5s forwards;
+  will-change:transform,opacity;
+  max-width:540px;
+  margin-top:16px;
+}
+.subheader p{
+  font-size:clamp(0.95rem,1.4vw,1.1rem);
+  font-weight:300;
+  line-height:1.7;
+  color:rgba(248,246,240,0.65);
+}
+
+/* ── CTA Button ── */
+.cta-wrap{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeSlideUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.8s forwards;
+  will-change:transform,opacity;
+  margin-top:clamp(28px,5vh,48px);
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:16px 40px;
+  font-size:clamp(0.75rem,1vw,0.85rem);
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#0A1128;
+  background:linear-gradient(135deg,#C9A84C,#B08F3A);
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.3s ease;
+  will-change:transform;
+  box-shadow:0 4px 24px rgba(201,168,76,0.3);
+}
+.cta-btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
+  transform:translateX(-100%);
+  transition:transform 0.6s ease;
+}
+.cta-btn:hover::before{transform:translateX(100%)}
+.cta-btn:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 8px 48px rgba(201,168,76,0.45);
+}
+.cta-btn:active{
+  transform:translateY(-1px) scale(1.01);
+  transition-duration:0.1s;
+}
+.cta-arrow{
+  display:inline-block;
+  transition:transform 0.3s ease;
+}
+.cta-btn:hover .cta-arrow{
+  transform:translateX(4px);
+}
+
+/* ── Pulsing ring behind CTA ── */
+.pulse-ring{
+  position:absolute;
+  inset:-8px;
+  border-radius:50px;
+  border:2px solid rgba(201,168,76,0.2);
+  animation:pulseRing 2s ease-out infinite;
+  pointer-events:none;
+}
+@keyframes pulseRing{
+  0%{transform:scale(1);opacity:0.6}
+  100%{transform:scale(1.15);opacity:0}
+}
+
+/* ── Bottom tagline ── */
+.bottom-tag{
+  position:fixed;
+  bottom:clamp(16px,3vh,32px);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  opacity:0;
+  animation:fadeSlideUp 0.8s ease 2.2s forwards;
+  font-size:clamp(0.55rem,0.8vw,0.65rem);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(248,246,240,0.25);
+}
+
+/* ── Responsive Meta ── */
+@media(max-width:480px){
+  .cta-btn{padding:14px 28px;font-size:0.7rem}
+  .dot-grid{background-size:30px 30px}
+}
+@media(min-width:768px){
+  .cta-btn{padding:18px 48px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  .logo{opacity:1;transform:none}
+  .headline,.subheader,.cta-wrap,.bottom-tag{opacity:1;transform:none}
+  .divider{width:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-wrap">
+  <div class="bg-gradient"></div>
+  <div class="clip-ornament"></div>
+</div>
+<div class="dot-grid"></div>
+
+<!-- Center Content -->
+<div class="center-wrap">
+
+  <!-- Logo -->
+  <div class="logo">
+    <span class="logo-primary">SID</span>
+    <span class="logo-sub">Perfume</span>
+  </div>
+
+  <!-- Gold Divider -->
+  <div class="divider"></div>
+
+  <!-- Headline -->
+  <div class="headline">
+    <h1>Scents That Define<br><span class="accent">Your Legacy</span></h1>
+  </div>
+
+  <!-- Subheader -->
+  <div class="subheader">
+    <p>Where timeless craftsmanship meets modern artistry — each bottle tells a story of power, passion, and prestige.</p>
+  </div>
+
+  <!-- CTA Button -->
+  <div class="cta-wrap">
+    <button class="cta-btn" onclick="enterSite()">
+      <span class="pulse-ring"></span>
+      Enter the Collection
+      <span class="cta-arrow">→</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- Bottom Tagline -->
+<div class="bottom-tag">Crafted for the Champions</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// Minimal JS — Just the CTA transition
+// ═══════════════════════════════════════════════════════════════
+
+function enterSite(){
+  var btn=document.querySelector('.cta-btn');
+  btn.textContent='Loading…';
+  btn.style.pointerEvents='none';
+  btn.style.opacity='0.7';
+
+  // Crossfade to main site
+  document.body.style.transition='opacity 0.6s ease';
+  document.body.style.opacity='0';
+
+  setTimeout(function(){
+    window.location.href='index.html';
+  },650);
+}
+
+// Keyboard support
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'||e.key===' '){
+    e.preventDefault();
+    enterSite();
+  }
+});
+</script>
+
+</body>
+</html>
