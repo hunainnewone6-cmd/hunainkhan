@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             initTypingAnimation();
             initCounters();
             initBundleCounter();
+            // Initialize premium animation system
+            initWebGLManager();
+            initAllAnimations();
           }, 400);
         }, 600);
       }
@@ -128,11 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ═════════════════════════════════════════════════════════════════
-  // 4. PARTICLE BACKGROUND (Canvas)
+  // 4. PARTICLE BACKGROUND (Canvas) — legacy, will be replaced by WebGL fluid field
   // ═════════════════════════════════════════════════════════════════
   (function initParticles() {
     const canvas = document.getElementById('particleCanvas');
     if (!canvas) return;
+
+    // Skip if WebGL manager will take over (check after loader completes)
+    window.__useLegacyParticles = true;
+
     const ctx = canvas.getContext('2d');
     let particles = [];
     let animFrame;
@@ -158,14 +165,13 @@ document.addEventListener('DOMContentLoaded', () => {
         this.speedX = (Math.random() - 0.5) * 0.3;
         this.speedY = (Math.random() - 0.5) * 0.3;
         this.opacity = Math.random() * 0.5 + 0.2;
-        this.hue = Math.random() > 0.5 ? 45 : 0; // Gold or crimson tint
+        this.hue = Math.random() > 0.5 ? 45 : 0;
       }
 
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Mouse interaction - gentle pull
         const dx = mouseXP - this.x;
         const dy = mouseYP - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -213,6 +219,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animateParticles() {
+      // If WebGL manager has taken over, stop this loop
+      if (!window.__useLegacyParticles) {
+        cancelAnimationFrame(animFrame);
+        return;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => {
         p.update();
@@ -224,7 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateParticles();
 
-    // Track mouse for particle interaction
     document.querySelector('.hero-section').addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
       mouseXP = e.clientX - rect.left;
@@ -702,5 +712,40 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 250);
   });
+
+  // ═════════════════════════════════════════════════════════════════
+  // 17. WEBGL MANAGER INITIALIZATION
+  // ═════════════════════════════════════════════════════════════════
+  function initWebGLManager() {
+    if (typeof WebGLManager === 'undefined') return;
+
+    const webgl = new WebGLManager();
+
+    // Liquid distortion on FIFA section and World Cup section
+    webgl.initLiquidDistortion('.fifa-section', {
+      intensity: 0.12,
+      rippleSpeed: 0.002,
+    });
+    webgl.initLiquidDistortion('.worldcup-section', {
+      intensity: 0.1,
+      rippleSpeed: 0.0015,
+    });
+
+    // Enhanced fluid particle field on hero (replaces basic one)
+    // Stop legacy particle system
+    window.__useLegacyParticles = false;
+    webgl.initFluidField('particleCanvas');
+
+    // Clean up on page unload
+    window.addEventListener('beforeunload', () => {
+      webgl.destroyAll();
+      if (typeof cleanupAllAnimations === 'function') {
+        cleanupAllAnimations();
+      }
+    });
+
+    // Store reference for potential cleanup
+    window.__webglManager = webgl;
+  }
 
 }); // End DOMContentLoaded
